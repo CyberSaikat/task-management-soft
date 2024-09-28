@@ -1,133 +1,272 @@
-# Task Management App
+# 📋 Task Management App
 
-A Task Management application built with **Next.js**, **MongoDB**, and **NextAuth**. This application allows users to manage tasks, view statistics, and update task statuses. Admin users can view additional statistics such as task distributions and tasks assigned to different users.
+<p align="center">
+  <img src="https://raw.githubusercontent.com/CyberSaikat/task-management-app/main/public/images/banner.png" alt="Leading Image" width="100%">
+</p>
 
-## Features
+A robust Task Management application built with **Next.js**, **MongoDB**, and **NextAuth**. This application empowers users to efficiently manage tasks, view insightful statistics, and update task statuses in real-time. Admin users benefit from advanced features, including comprehensive statistics on task distribution and user assignments.
 
-- User authentication using **NextAuth**
-- Admin and user roles
-- View, add, update, and delete tasks
-- Task status management (e.g., Completed, In Progress, Not Started, Overdue)
-- Admin statistics dashboard
-  - Task distribution chart (Pie chart)
-    - Tasks per user (Bar chart)
-- Responsive UI with **React** and **Recharts**
+## 📚 Table of Contents
 
-## Technologies
+- [✨ Features](#-features)
+- [🛠️ Technologies](#️-technologies)
+- [🚀 Getting Started](#-getting-started)
+  - [📋 Prerequisites](#-prerequisites)
+  - [⚙️ Installation](#️-installation)
+- [🔧 Configuration](#-configuration)
+- [📘 Usage](#-usage)
+  - [👤 User Role](#-user-role)
+  - [👑 Admin Role](#-admin-role)
+- [🔌 API Endpoints](#-api-endpoints)
+- [🏗️ Project Structure](#️-project-structure)
+- [🎨 Customizing the App](#-customizing-the-app)
+- [🧪 Testing](#-testing)
+- [🚢 Deployment](#-deployment)
+- [🔮 Future Improvements](#-future-improvements)
+- [🤝 Contributing](#-contributing)
+- [📄 License](#-license)
+- [🙏 Acknowledgements](#-acknowledgements)
 
-- **Next.js** (React framework)
-- **MongoDB** (Database)
-- **NextAuth.js** (User authentication)
-- **Recharts** (Charts and graphs)
-- **TypeScript** for static typing
+## ✨ Features
 
-## Installation
+### For All Users
+
+- 🔐 Secure user authentication via NextAuth
+- ➕ Intuitive task creation, viewing, updating, and deletion
+- 🔄 Real-time task status management (Completed, In Progress, Not Started, Overdue)
+- 📊 Personal task statistics dashboard
+
+### Admin-Exclusive Features
+
+- 📈 Comprehensive admin statistics dashboard
+  - 🥧 Task distribution visualization (Pie chart)
+  - 📊 User task assignment overview (Bar chart)
+- 👥 User management capabilities
+
+## 🛠️ Technologies
+
+- 🖥️ **Frontend**: Next.js (React framework), TypeScript
+- 🔙 **Backend**: Next.js API routes
+- 🗄️ **Database**: MongoDB
+- 🔑 **Authentication**: NextAuth.js
+- 📊 **Data Visualization**: Recharts
+- 🎨 **Styling**: Tailwind CSS
+- 🔄 **State Management**: React Context API
+- 📝 **Form Handling**: React Hook Form
+- 🌐 **API Requests**: Axios
+
+## 🚀 Getting Started
+
+### 📋 Prerequisites
+
+- Node.js (v14.0.0 or later)
+- npm (v6.0.0 or later)
+- MongoDB instance (local or cloud-based)
+
+### ⚙️ Installation
 
 1. Clone the repository:
 
    ```bash
    git clone https://github.com/CyberSaikat/task-management-app.git
-    ```
+   ```
 
-2. Install dependencies:
+2. Navigate to the project directory:
 
-    ```bash
-    cd task-management-app
-    npm install
-    ```
+   ```bash
+   cd task-management-app
+   ```
 
-3. Set up your environment variables by creating a .env file in the root of the project. Add the following variables:
+3. Install dependencies:
 
-    ```bash
-    MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/mydatabase?retryWrites=true&w=majority
-    NEXTAUTH_URL=http://localhost:3000
-    NEXTAUTH_SECRET=your_nextauth_secret
-    RESEND_API_KEY=your_sendgrid_api_key
-    ```
+   ```bash
+   npm install
+   ```
 
-4. Run the development server:
+4. Set up your environment variables (see [Configuration](#-configuration) section).
 
-    ```bash
-    npm run dev
-    ```
+5. Run the development server:
 
-The app will be available at <http://localhost:3000>.
+   ```bash
+   npm run dev
+   ```
 
-## API Endpoints
+6. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
-Here are the key API endpoints for managing tasks and viewing statistics:
+## 🔧 Configuration
 
-### Tasks
+Create a `.env.local` file in the root directory and add the following environment variables:
 
-1. GET `/api/tasks/my-tasks` - Fetch tasks for the logged-in user.
-2. PUT `/api/tasks/:id/status` - Update the status of a specific task.
-3. GET `/api/tasks/:id` - Fetch a single task by ID.
-4. POST `/api/tasks` - Create a new task.
-5. DELETE `/api/tasks/:id` - Delete a task by ID.
+```env
+MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/mydatabase?retryWrites=true&w=majority
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=your_nextauth_secret
+RESEND_API_KEY=your_resend_api_key
+```
 
-### Statistics
+Replace the placeholder values with your actual MongoDB connection string, NextAuth secret, and Resend API key.
 
-GET `/api/statistics` - Fetch task statistics, including total tasks, completed tasks, and tasks per user.
+## 📘 Usage
 
-## Usage
+### 👤 User Role
 
-### User Role
+After signing in, regular users can:
 
-- After signing in, a regular user can:
-  - View tasks assigned to them
-  - Add new tasks
-  - Update task status
-  - Delete tasks
-  - View their own tasks statistics
-  - View their own tasks
-- Admin Role
-  - Admin users have access to a dashboard that shows:
-    - Task distribution by status (Pie Chart)
-    - Task count per user (Bar Chart)
+- 👀 View and manage their assigned tasks
+- ➕ Create new tasks
+- 🔄 Update task status
+- 🗑️ Delete their own tasks
+- 📊 Access personal task statistics
 
-## Customizing the App
+### 👑 Admin Role
 
-### User Authentication
+Admin users have additional capabilities:
 
-The app uses NextAuth.js for authentication. You can configure different authentication providers like Google, GitHub, etc. Currently, it supports credentials-based authentication.
+- 🖥️ Access to an advanced dashboard showing:
+  - 🥧 Overall task distribution by status (Pie Chart)
+  - 📊 Task count per user (Bar Chart)
+- 🔧 Ability to manage all users' tasks
+- 👥 Access to user management features
 
-Modify the `authOptions` in `src\app\api\auth\[...nextauth]\options.tsx` to add or customize providers.
+## 🔌 API Endpoints
 
-### Task Model
+| Endpoint | Method | Description | Access |
+|----------|--------|-------------|--------|
+| `/api/tasks/my-tasks` | GET | Fetch tasks for the logged-in user | 👤 User |
+| `/api/tasks/:id/status` | PUT | Update the status of a specific task | 👤 User |
+| `/api/tasks/:id` | GET | Fetch a single task by ID | 👤 User |
+| `/api/tasks` | POST | Create a new task | 👤 User |
+| `/api/tasks/:id` | DELETE | Delete a task by ID | 👤 User |
+| `/api/statistics` | GET | Fetch task statistics | 👑 Admin |
 
-The task data is stored in MongoDB and represented by the `Task` model, which contains fields like `title`, `description`, `dueDate`, `status`, and `owner`. You can modify the schema as needed in `src\models\Task.tsx`.
+🏗️ Project Structure
 
-## Future Improvements
+```
+task-management-app/
+│
+├── public/
+│   └── [Static files]
+│
+├── src/
+│   ├── abstract/
+│   ├── app/
+│   │   ├── (auth)/
+│   │   │   ├── forgot-password/
+│   │   │   ├── login/
+│   │   │   └── reset-password/
+│   │   ├── (backend)/
+│   │   │   └── soft/
+│   │   │       ├── dashboard/
+│   │   │       ├── my-tasks/
+│   │   │       ├── statistics/
+│   │   │       ├── task/
+│   │   │       ├── task-list/
+│   │   │       └── users/
+│   │   ├── api/
+│   │   │   ├── auth/
+│   │   │   ├── statistics/
+│   │   │   ├── task-lists/
+│   │   │   ├── tasks/
+│   │   │   └── users/
+│   │   ├── fonts/
+│   │   ├── favicon.ico
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── assets/
+│   │   ├── css/
+│   │   ├── images/
+│   │   └── scss/
+│   ├── components/
+│   ├── context/
+│   ├── database/
+│   ├── hooks/
+│   ├── lib/
+│   ├── models/
+│   └── [Other project-specific directories]
+│
+├── .env.local
+├── .gitignore
+├── next.config.js
+├── package.json
+├── README.md
+└── tsconfig.json
+```
 
-- Add filters and search functionality for tasks
-- Implement notifications for task deadlines
-- Improve mobile responsiveness
-- Add additional statistics and reports for admins
-- Integrate with external calendar services (e.g., Google Calendar)
+## 🎨 Customizing the App
 
-## Contributing
+### 🔐 User Authentication
 
-Feel free to submit a pull request or open an issue if you find any bugs or have feature requests.
+The app uses NextAuth.js for authentication. To add or customize providers, modify the `authOptions` in `src/app/api/auth/[...nextauth]/options.tsx`.
 
-- Fork the project
-- Create your feature branch (`git checkout -b feature/my-new-feature`)
-- Commit your changes (`git commit -am 'Add some feature'`)
-- Push to the branch (`git push origin feature/my-new-feature`)
-- Create a new Pull Request
+### 📝 Task Model
 
-## License
+The `Task` model is defined in `src/models/Task.tsx`. Modify this file to adjust the task schema according to your needs.
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+## 🧪 Testing
 
-### Key Points
+Run the test suite with:
 
-1. **Project Overview**: Brief introduction about the project and its purpose.
-2. **Features**: List the main features, both for regular users and admin users.
-3. **Technologies**: Outline the tech stack.
-4. **Installation**: Detailed steps to set up the project.
-5. **API Endpoints**: Explanation of the API routes, highlighting the endpoints users and admins can interact with.
-6. **Usage**: Explanation of how to use the app depending on the user's role.
-7. **Customization**: Guide on how to customize user authentication or the task model.
-8. **Contributing**: Steps on how to contribute to the project.
+```bash
+npm test
+```
 
-This README template should give any developer a good starting point to understand and work with your project.
+To run tests in watch mode:
+
+```bash
+npm run test:watch
+```
+
+## 🚢 Deployment
+
+1. Build the application:
+
+   ```bash
+   npm run build
+   ```
+
+2. Start the production server:
+
+   ```bash
+   npm start
+   ```
+
+For platform-specific deployment instructions, refer to the [Next.js deployment documentation](https://nextjs.org/docs/deployment).
+
+## 🔮 Future Improvements
+
+- 🔍 Implement task filtering and search functionality
+- 🔔 Add notification system for task deadlines
+- 📱 Enhance mobile responsiveness
+- 📈 Expand admin reporting capabilities
+- 📅 Integrate with external calendar services (e.g., Google Calendar, Apple Calendar)
+- 🖱️ Implement drag-and-drop task management interface
+- 👥 Add team collaboration features
+
+## 🤝 Contributing
+
+We welcome contributions! Please follow these steps:
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+Please ensure your code adheres to our coding standards and includes appropriate tests.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgements
+
+- [Next.js](https://nextjs.org/)
+- [MongoDB](https://www.mongodb.com/)
+- [NextAuth.js](https://next-auth.js.org/)
+- [Recharts](https://recharts.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+
+---
+
+For any questions or support, please [open an issue](https://github.com/CyberSaikat/task-management-app/issues) or contact the maintainers.
