@@ -51,7 +51,7 @@ export default function TaskList() {
     useEffect(() => {
         fetchTasks();
         fetchUsers();
-    }, [fetchTasks, fetchUsers]);
+    }, []);
 
     const handleDelete = (taskId: string) => {
         setLoading(true);

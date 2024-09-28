@@ -42,7 +42,7 @@ export default function UsersPage() {
       .finally(() => {
         setLoading(false);
       });
-  }, [setLoading]);
+  }, []);
 
   function reloadUsers() {
     setLoading(true);

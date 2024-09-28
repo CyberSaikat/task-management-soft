@@ -17,6 +17,7 @@ A robust Task Management application built with **Next.js**, **MongoDB**, and **
 - [📘 Usage](#-usage)
   - [👤 User Role](#-user-role)
   - [👑 Admin Role](#-admin-role)
+  - [🔑 Admin Credentials](#-admin-credentrials)
 - [🔌 API Endpoints](#-api-endpoints)
 - [🏗️ Project Structure](#️-project-structure)
 - [🎨 Customizing the App](#-customizing-the-app)
@@ -127,6 +128,11 @@ Admin users have additional capabilities:
   - 📊 Task count per user (Bar Chart)
 - 🔧 Ability to manage all users' tasks
 - 👥 Access to user management features
+
+### 🔑 Admin Credentials
+
+- **Username / Email ID:** <admin@tasksoft.com>
+- **Password:** tasksoft
 
 ## 🔌 API Endpoints
 

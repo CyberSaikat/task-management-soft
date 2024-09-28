@@ -111,7 +111,7 @@ const MyTasks: React.FC = () => {
         };
 
         fetchTasks();
-    }, [status]);
+    }, []);
 
     const updateTaskStatus = async (taskId: string, newStatus: string) => {
         setUpdating((prev) => ({ ...prev, [taskId]: true }));

@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { useContext, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { LoaderContext } from "@/context/loaderContext";
 import axios from "axios";
 import toastMsg from "@/utils/toaster";
@@ -27,7 +28,7 @@ export default function TaskList() {
             .finally(() => {
                 setLoading(false);
             });
-    }, [setLoading]);
+    }, []);
 
     function reloadTasks() {
         setLoading(true);
