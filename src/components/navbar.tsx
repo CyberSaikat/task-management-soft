@@ -3,7 +3,6 @@
 import React, { useEffect } from "react";
 import {
   Navbar,
-  NavbarBrand,
   NavbarContent,
   NavbarItem
 } from "@nextui-org/react";

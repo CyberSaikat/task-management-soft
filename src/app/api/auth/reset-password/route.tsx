@@ -2,7 +2,7 @@ import { conn } from "@/database/config";
 import User from "@/models/User";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest, res: NextResponse) {
+export async function GET() {
   return NextResponse.json({ message: "Method not allowed" }, { status: 405 });
 }
 
@@ -49,6 +49,7 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     );
   } catch (error) {
+    console.error(error);
     return NextResponse.json(
       { message: "An unexpected error occurred" },
       { status: 500 }

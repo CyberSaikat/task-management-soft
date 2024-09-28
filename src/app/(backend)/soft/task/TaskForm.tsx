@@ -23,7 +23,6 @@ const TaskForm: React.FC<TaskFormProps> = ({ task, taskId, onComplete, currentUs
     const [users, setUsers] = useState<{ name: string; value: string }[]>([]);
     const [taskLists, setTaskLists] = useState<{ name: string; value: string }[]>([]); // State for task lists
     const [selectedTaskList, setSelectedTaskList] = useState<string | null>(null); // State for selected task list
-    const router = useRouter();
 
     const statusOptions = [
         { name: "Not Started", value: "Not Started" },
@@ -49,13 +48,25 @@ const TaskForm: React.FC<TaskFormProps> = ({ task, taskId, onComplete, currentUs
         setTaskLists(taskListOptions);
     };
 
+    const fetchTaskDetails = async () => {
+        const response = await axios.get(`/api/tasks/${taskId}`);
+        const task = response.data.task;
+        setTitle(task.title);
+        setDescription(task.description);
+        setDueDate(new Date(task.due_date).toISOString().split("T")[0]);
+        setStatus(task.status);
+        setAssignedUser(task.assigned_user._id);
+        setOwner(task.owner);
+        setSelectedTaskList(task.taskList?._id ?? null); // Set task list ID if present
+    };
+
     useEffect(() => {
         fetchUsers();
         fetchTaskLists(); // Fetch task lists on component mount
         if (taskId) {
             fetchTaskDetails();
         }
-    }, [taskId]);
+    }, [taskId, fetchTaskDetails]);
 
     useEffect(() => {
         if (task) {
@@ -79,18 +90,6 @@ const TaskForm: React.FC<TaskFormProps> = ({ task, taskId, onComplete, currentUs
             setSelectedTaskList(typeof task.taskList === 'object' ? task.taskList._id : null);
         }
     }, [task]);
-
-    const fetchTaskDetails = async () => {
-        const response = await axios.get(`/api/tasks/${taskId}`);
-        const task = response.data.task;
-        setTitle(task.title);
-        setDescription(task.description);
-        setDueDate(new Date(task.due_date).toISOString().split("T")[0]);
-        setStatus(task.status);
-        setAssignedUser(task.assigned_user._id);
-        setOwner(task.owner);
-        setSelectedTaskList(task.taskList?._id ?? null); // Set task list ID if present
-    };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();

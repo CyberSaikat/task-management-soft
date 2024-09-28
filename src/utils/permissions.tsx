@@ -46,10 +46,9 @@ export function checkPermission(
   requestPage?: string
 ) {
   if (typeof window === "undefined") return false;
-  let pathname = window.location.pathname.split("/");
-  let page = pathname[pathname.length - 1];
+  const pathname = window.location.pathname.split("/");
+  const page = pathname[pathname.length - 1];
   const usertype = userdata.usertype ?? "user";
-  const read = "read";
 
   if (!userdata) {
     return false;

@@ -38,6 +38,7 @@ export async function PUT(req: NextRequest) {
             return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
         }
     } catch (error) {
+        console.error(error);
         return NextResponse.json({ message: "Failed to update task" }, { status: 500 });
     }
 }

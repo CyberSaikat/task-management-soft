@@ -49,7 +49,7 @@ const ResetPassword: React.FC = () => {
         setLoading(true);
         axios
             .post("/api/auth/reset-password", { password, resetKey })
-            .then((response) => {
+            .then(() => {
                 setMessage("Password has been reset successfully. Redirecting to login...");
                 setErrors({ password: "", confirmPassword: "" });
                 setTimeout(() => {

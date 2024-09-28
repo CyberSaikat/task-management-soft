@@ -7,7 +7,6 @@ import axios from "axios";
 import type { CustomUser } from "@/abstract/type";
 import { AnimatedInput, AnimatedSelect } from "@/components/animatedInput";
 import { LoaderContext } from "@/context/loaderContext";
-import { set } from "mongoose";
 
 interface UserFormProps {
     user?: CustomUser;

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useSession } from "next-auth/react";
-import { Loader2, CheckCircle, XCircle, Clock, PlayCircle } from "lucide-react";
+import { Loader2, CheckCircle, Clock, PlayCircle } from "lucide-react";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
@@ -102,6 +102,7 @@ const MyTasks: React.FC = () => {
                     const response = await axios.get("/api/tasks/my-tasks");
                     setTasks(response.data.tasks);
                 } catch (err) {
+                    console.log(err);
                     setError("Failed to load tasks.");
                 } finally {
                     setLoading(false);
@@ -124,6 +125,7 @@ const MyTasks: React.FC = () => {
                 )
             );
         } catch (err) {
+            console.log(err);
             setError("Failed to update task status.");
         } finally {
             setUpdating((prev) => ({ ...prev, [taskId]: false }));

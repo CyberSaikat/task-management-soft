@@ -10,11 +10,7 @@ import Image from "next/image";
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-interface LoginProps {
-    onSubmit: (email: string, password: string) => void;
-}
-
-const Login: React.FC<LoginProps> = () => {
+const Login: React.FC = () => {
     const [loading, setLoading] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');

@@ -102,9 +102,9 @@ export async function POST(request: NextRequest) {
   }
 
 
-  let host = request.headers.get("host");
+  const host = request.headers.get("host");
   const protocol = request.headers.get("x-forwarded-proto") || "http";
-  let url = `${protocol}://${host}`;
+  const url = `${protocol}://${host}`;
 
   try {
     switch (action) {
@@ -169,8 +169,8 @@ export async function POST(request: NextRequest) {
       default:
         return NextResponse.json({ message: "Invalid action", status: 400 }, { status: 400 });
     }
-  } catch (error: any) {
-    const errorMessage = error.message || "An error occurred";
+  } catch (error) {
+    const errorMessage = (error instanceof Error ? error.message : String(error)) || "An error occurred";
 
     if (errorMessage.includes("Invalid email address")) {
       return NextResponse.json({ message: "Invalid email address", status: 400 }, { status: 400 });

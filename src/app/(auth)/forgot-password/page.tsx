@@ -6,7 +6,6 @@ import { AnimatedInput } from "@/components/animatedInput";
 import logo from "@/assets/images/logo.png";
 import axios from "axios";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 
 const ForgotPassword: React.FC = () => {
     const [loading, setLoading] = useState(false);
@@ -15,7 +14,6 @@ const ForgotPassword: React.FC = () => {
     const [errors, setErrors] = useState({
         email: '',
     });
-    const router = useRouter();
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -29,7 +27,7 @@ const ForgotPassword: React.FC = () => {
         setLoading(true);
         axios
             .post("/api/auth/forgot-password", { email })
-            .then((response) => {
+            .then(() => {
                 setMessage("A password reset link has been sent to your email.");
                 setErrors({ email: "" });
             })

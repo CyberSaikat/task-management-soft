@@ -1,10 +1,10 @@
 import Task from "@/models/Task";
 import { getServerSession } from "next-auth/next";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { authOptions } from "../auth/[...nextauth]/options";
 import { CustomUser } from "@/abstract/type";
 
-export async function GET(req: NextRequest) {
+export async function GET() {
     try {
         const session = await getServerSession(authOptions);
         if (!session) {
@@ -18,7 +18,7 @@ export async function GET(req: NextRequest) {
         const isAdmin = user.usertype === "admin";
         const today = new Date().toISOString().split('T')[0];
 
-        let taskStats = {
+        const taskStats = {
             totalTasks: 0,
             completedTasks: 0,
             inProgressTasks: 0,

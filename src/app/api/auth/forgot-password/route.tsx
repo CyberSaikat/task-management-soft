@@ -10,7 +10,7 @@ export function GET() {
 export async function POST(request: NextRequest) {
   await conn();
 
-  let host = request.headers.get("host");
+  const host = request.headers.get("host");
   const protocol = request.headers.get("x-forwarded-proto") || "http";
   const body = await request.json();
   const email = body.email;
@@ -29,13 +29,13 @@ export async function POST(request: NextRequest) {
     }
 
     if (user) {
-      let token = Math.random().toString(36).substr(2, 5);
+      const token = Math.random().toString(36).substr(2, 5);
       user.reset_key = token;
       user.reset_key_expires = Date.now() + 3600000; // 1 hour
       await user.save();
-      let url = `${protocol}://${host}/reset-password/${token}`;
+      const url = `${protocol}://${host}/reset-password/${token}`;
       const subject = "Password Reset";
-      let html = `<!DOCTYPE html>
+      const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">

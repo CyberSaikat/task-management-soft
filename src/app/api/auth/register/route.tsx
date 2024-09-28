@@ -1,13 +1,14 @@
-import { connect } from "@/db/config";
+
 import { NextRequest, NextResponse } from "next/server";
 import { registerSchema } from "@/validator/authValidator";
 import vine, { errors } from "@vinejs/vine";
 import JSONAPIErrorReporter from "@/validator/errorReporter";
 import bcrypt from "bcryptjs";
-import User from "@/models/user";
+import { conn } from "@/database/config";
+import User from "@/models/User";
 
 export async function POST(req: NextRequest) {
-  connect();
+  await conn();
   try {
     const body = await req.json();
 

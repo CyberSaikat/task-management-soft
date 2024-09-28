@@ -5,7 +5,7 @@ import { authOptions } from "../../auth/[...nextauth]/options";
 import { CustomUser } from "@/abstract/type";
 import { conn } from "@/database/config";
 
-export async function GET(req: NextRequest) {
+export async function GET() {
     await conn();
     const session = await getServerSession(authOptions);
 
@@ -20,6 +20,7 @@ export async function GET(req: NextRequest) {
         const tasks = await Task.find({ $or: [{ owner: userId }, { assigned_user: userId }] });
         return NextResponse.json({ tasks }, { status: 200 });
     } catch (error) {
+        console.log(error);
         return NextResponse.json({ message: "Failed to load tasks" }, { status: 500 });
     }
 }

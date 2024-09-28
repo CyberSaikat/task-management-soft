@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaUserEdit, FaTrash, FaTh, FaTable } from "react-icons/fa";
+import { FaUserEdit, FaTrash, FaTable } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "./ui/button";
 
@@ -25,7 +25,6 @@ const DataTable: React.FC<DataTableProps> = ({
   onEdit,
   onDelete,
   itemPerPage = 10,
-  visibilitySwitch,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");

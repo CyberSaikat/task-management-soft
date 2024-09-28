@@ -28,7 +28,6 @@ export function AnimatedInput({
   className = "",
   onchange,
   value = "",
-  onBlur,
   parentClass = "",
   autoComplete,
   ...rest
@@ -114,7 +113,6 @@ export function AnimatedSelect({
   label,
   options,
   required,
-  name,
   id,
   className,
   onChange,
@@ -238,7 +236,6 @@ export function AnimatedMultiSelect({
   label,
   options,
   required,
-  name,
   id,
   className,
   onChange,

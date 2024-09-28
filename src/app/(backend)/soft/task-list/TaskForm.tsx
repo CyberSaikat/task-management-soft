@@ -2,13 +2,9 @@
 
 import { useContext, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
-import type { Task, TaskList } from "@/abstract/interface";
-import { DatePicker } from "@nextui-org/react";
+import type { TaskList } from "@/abstract/interface";
 import axios from "axios";
-import { AnimatedInput, AnimatedSelect } from "@/components/animatedInput";
+import { AnimatedInput } from "@/components/animatedInput";
 import toastMsg from "@/utils/toaster";
 import { LoaderContext } from "@/context/loaderContext";
 
@@ -50,6 +46,7 @@ export default function TaskForm({ task, onComplete }: TaskFormProps) {
                         toastMsg('error', res.data.message);
                     }
                 }).catch((err) => {
+                    console.error(err);
                     toastMsg('error', "Failed to update task");
                 }).finally(() => {
                     setLoading(false);
@@ -66,6 +63,7 @@ export default function TaskForm({ task, onComplete }: TaskFormProps) {
                         toastMsg('error', res.data.message);
                     }
                 }).catch((err) => {
+                    console.error(err);
                     toastMsg('error', "Failed to save task");
                 }).finally(() => {
                     setLoading(false);

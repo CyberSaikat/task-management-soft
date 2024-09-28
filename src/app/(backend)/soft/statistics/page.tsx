@@ -39,7 +39,8 @@ const StatisticsPage: React.FC = () => {
                 const response = await axios.get("/api/statistics");
                 setTaskStats(response.data.taskStats);
                 setLoading(false);
-            } catch (err) {
+            } catch (error) {
+                console.error(error);
                 setError("Failed to load statistics");
                 setLoading(false);
             }
@@ -114,7 +115,7 @@ const StatisticsPage: React.FC = () => {
         { name: 'Due Today', value: tasksDueToday },
     ];
 
-    const barChartData = Object.entries(tasksPerUser || {}).map(([_, { name, taskCount }]) => ({
+    const barChartData = Object.entries(tasksPerUser || {}).map(([, { name, taskCount }]) => ({
         name,
         Tasks: taskCount,
     }));

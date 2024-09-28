@@ -41,7 +41,7 @@ export default function RootLayoutCode({
                 router.push("/login");
             }
         });
-    }, []);
+    }, [router]);
 
     useEffect(() => {
         const fetchUserData = async () => {

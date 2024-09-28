@@ -53,12 +53,9 @@ export function CropImage({
   const imgRef = useRef<HTMLImageElement>(null);
   const [crop, setCrop] = useState<Crop>();
   const [completedCrop, setCompletedCrop] = useState<PixelCrop>();
-  const [scale, setScale] = useState(1);
-  const [rotate, setRotate] = useState(0);
-  const [aspect, setAspect] = useState<number | undefined>(defaultAspect);
-  const blobUrlRef = useRef("");
-  const hiddenAnchorRef = useRef<HTMLAnchorElement>(null);
-  const [firstComplete, setFirstComplete] = useState(true);
+  const scale = 1;
+  const rotate = 0;
+  const aspect = defaultAspect;
 
   function onImageLoad(e: React.SyntheticEvent<HTMLImageElement>) {
     if (aspect) {
@@ -97,7 +94,7 @@ export function CropImage({
       {!!imgSrc && imgSrc != "null" && (
         <ReactCrop
           crop={crop}
-          onChange={(_, percentCrop) => setCrop(percentCrop)}
+          onChange={(_: any, percentCrop: any) => setCrop(percentCrop)}
           onComplete={handleComplete}
           aspect={aspect}
           minWidth={400}

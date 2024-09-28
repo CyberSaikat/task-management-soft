@@ -19,10 +19,6 @@ export default function TaskList() {
     const [currentTask, setCurrentTask] = useState<CustomTask | null>(null);
     const { setLoading } = useContext(LoaderContext);
 
-    useEffect(() => {
-        fetchTasks();
-        fetchUsers();
-    }, []);
 
     const fetchTasks = () => {
         setLoading(true);
@@ -51,6 +47,11 @@ export default function TaskList() {
             })
             .finally(() => setLoading(false));
     };
+
+    useEffect(() => {
+        fetchTasks();
+        fetchUsers();
+    }, [fetchTasks, fetchUsers]);
 
     const handleDelete = (taskId: string) => {
         setLoading(true);
