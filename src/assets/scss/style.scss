@@ -1,0 +1,15 @@
+.background {
+  padding: 40px;
+  background: url("../images/login-bg.jpg") center no-repeat;
+  background-size: cover;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(60deg, hsla(var(--primary),90%), hsla(var(--accent),40%) 100%);
+  }
+}
