@@ -17,7 +17,6 @@ export default function TaskList() {
     const { setLoading } = useContext(LoaderContext);
     const [currentTask, setCurrentTask] = useState<TaskList | null>(null);
     const [filteredTasks, setFilteredTasks] = useState([]);
-    const router = useRouter();
 
     useEffect(() => {
         setLoading(true);

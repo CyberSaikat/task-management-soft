@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fc9370ba-b498-4ab7-8848-84f760ac2c16" name="Changes" comment="initial">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postcss.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/postcss.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/abstract/interface.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/abstract/interface.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/abstract/type.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/abstract/type.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(auth)/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/login/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(backend)/soft/task-list/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(backend)/soft/task-list/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/auth/[...nextauth]/options.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/[...nextauth]/options.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/auth/login/route.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/login/route.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/soft/dashboard/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MenuItems.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MenuItems.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Task.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/TaskList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/TaskList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/User.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/User.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/mailler.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/sendMailer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/sendMailer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task.md" beforeDir="false" afterPath="$PROJECT_DIR$/task.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/CyberSaikat/task-management-app.git",
+    "accountId": "dbf7fa4d-87e3-49df-94d0-9224d490d6ed"
+  }
+}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2mcPQsqzLVSTVz7dgR5q4FFduDA" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "E:/Projects/NextJS/task-management-software",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "watcher.settings",
+    "ts.external.directory.path": "E:\\Projects\\NextJS\\task-management-software\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Projects\NextJS\task-management-software\src\assets\images" />
+      <recent name="E:\Projects\NextJS\task-management-software\src" />
+      <recent name="E:\Projects\NextJS\task-management-software\public" />
+      <recent name="E:\Projects\NextJS\task-management-software\public\images" />
+      <recent name="E:\Projects\NextJS\task-management-software\src\components" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Projects\NextJS\task-management-software\src\assets" />
+      <recent name="E:\Projects\NextJS\task-management-software\src" />
+      <recent name="E:\Projects\NextJS\task-management-software\public" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-WS-242.20224.342" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fc9370ba-b498-4ab7-8848-84f760ac2c16" name="Changes" comment="" />
+      <created>1727372879700</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1727372879700</updated>
+      <workItem from="1727372881146" duration="7637000" />
+      <workItem from="1727380830674" duration="49000" />
+      <workItem from="1727447856368" duration="3654000" />
+      <workItem from="1727533777221" duration="655000" />
+      <workItem from="1727547822674" duration="980000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="User">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="*" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="initial" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial" />
+  </component>
+</project>

@@ -1,7 +1,6 @@
-import { FaHome, FaTasks, FaUserFriends, FaChartPie, FaCogs, FaBell } from 'react-icons/fa';
-import { MdAssignment } from 'react-icons/md'; // For individual task icon
-import { AiOutlineUserAdd } from 'react-icons/ai';
-import { MenuItems } from "@/abstract/interface"; // For adding users
+import { FaHome, FaTasks, FaUserFriends, FaChartPie } from 'react-icons/fa';
+import { MdAssignment } from 'react-icons/md';
+import { MenuItems } from "@/abstract/interface";
 
 const menuItems: MenuItems[] = [
     // Home
