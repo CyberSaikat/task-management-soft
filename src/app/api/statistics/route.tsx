@@ -13,11 +13,9 @@ export async function GET() {
                 { status: 401 }
             );
         }
-
         const user = session.user as CustomUser;
         const isAdmin = user.usertype === "admin";
         const today = new Date().toISOString().split('T')[0];
-
         const taskStats = {
             totalTasks: 0,
             completedTasks: 0,
@@ -25,48 +23,36 @@ export async function GET() {
             notStartedTasks: 0,
             overdueTasks: 0,
             tasksDueToday: 0,
-            tasksPerUser: {} as { [key: string]: { name: string, taskCount: number } }, // Map user ID to { name, taskCount }
+            tasksPerUser: {} as { [key: string]: { name: string, taskCount: number } },
         };
+        const limit = 100;
         const tasks = isAdmin
-            ? await Task.find().populate("assigned_user", "name")
+            ? await Task.find().limit(limit).populate("assigned_user", "name")
             : await Task.find({
                 $or: [{ owner: user._id }, { assigned_user: user._id }]
-            }).populate("assigned_user", "name");
-
-        taskStats.totalTasks = tasks.length;
+            }).limit(limit).populate("assigned_user", "name");
         tasks.forEach((task) => {
-            switch (task.status) {
-                case "Completed":
-                    taskStats.completedTasks++;
-                    break;
-                case "In Progress":
-                    taskStats.inProgressTasks++;
-                    break;
-                case "Not Started":
-                    taskStats.notStartedTasks++;
-                    break;
-            }
-
-            if (task.due_date.toISOString().split('T')[0] < today) {
-                taskStats.overdueTasks++;
-            }
-
-            if (task.due_date.toISOString().split('T')[0] === today) {
-                taskStats.tasksDueToday++;
-            }
+            taskStats.totalTasks++;
+            if (task.status === "Completed") taskStats.completedTasks++;
+            else if (task.status === "In Progress") taskStats.inProgressTasks++;
+            else if (task.status === "Not Started") taskStats.notStartedTasks++;
+            const taskDueDate = task.due_date.toISOString().split('T')[0];
+            if (taskDueDate < today) taskStats.overdueTasks++;
+            if (taskDueDate === today) taskStats.tasksDueToday++;
             if (task.assigned_user) {
-                const userId = task.assigned_user._id;
-                const userName = task.assigned_user.name;
-                if (taskStats.tasksPerUser[userId]) {
-                    taskStats.tasksPerUser[userId].taskCount++;
-                } else {
-                    taskStats.tasksPerUser[userId] = { name: userName, taskCount: 1 };
+                const userId = task.assigned_user._id.toString(); // Ensure userId is a string
+                if (!taskStats.tasksPerUser[userId]) {
+                    taskStats.tasksPerUser[userId] = {
+                        name: task.assigned_user.name,
+                        taskCount: 0
+                    };
                 }
+                taskStats.tasksPerUser[userId].taskCount++;
             }
         });
-
         return NextResponse.json({ taskStats }, { status: 200 });
     } catch (error) {
-        return NextResponse.json({ message: error }, { status: 500 });
+        console.error("Error fetching task stats:", error);
+        return NextResponse.json({ message: "Server error occurred" }, { status: 500 });
     }
 }
