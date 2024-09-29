@@ -20,18 +20,29 @@ export async function GET() {
         let tasks;
 
         if (isAdmin) {
-            tasks = await Task.find().populate("owner", "name").populate("assigned_user", "name").populate("taskList", "name");
+            tasks = await Task.find().populate("owner", "name").populate("owner", "name").populate({
+                path: 'assigned_user', select: 'name',
+                strictPopulate: false
+            }).populate({
+                path: 'taskList', strictPopulate: false, select: 'name'
+            });
         } else {
             tasks = await Task.find({
                 $or: [
                     { owner: user._id },
                     { assigned_user: user._id }
                 ]
-            }).populate("owner", "name").populate("assigned_user", "name").populate("taskList", "name");
+            }).populate("owner", "name").populate({
+                path: 'assigned_user', select: 'name',
+                strictPopulate: false
+            }).populate({
+                path: 'taskList', strictPopulate: false, select: 'name'
+            });
         }
 
         return NextResponse.json({ tasks }, { status: 200 });
     } catch (error) {
+        console.log(error);
         return NextResponse.json({ message: error }, { status: 500 });
     }
 }

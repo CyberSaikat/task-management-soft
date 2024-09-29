@@ -10,7 +10,7 @@ interface TaskFormProps {
     taskId?: string;
     onComplete: () => void;
     users: CustomUser[];
-    currentUser?: string;
+    currentUser?: CustomUser;
 }
 
 const TaskForm: React.FC<TaskFormProps> = ({ task, taskId, onComplete, currentUser }) => {
@@ -19,10 +19,10 @@ const TaskForm: React.FC<TaskFormProps> = ({ task, taskId, onComplete, currentUs
     const [dueDate, setDueDate] = useState<string>("");
     const [status, setStatus] = useState<string>("Not Started");
     const [assignedUser, setAssignedUser] = useState<string | null>(null);
-    const [owner, setOwner] = useState<string>(""); // Assuming the owner is the logged-in user
+    const [owner, setOwner] = useState<string>("");
     const [users, setUsers] = useState<{ name: string; value: string }[]>([]);
-    const [taskLists, setTaskLists] = useState<{ name: string; value: string }[]>([]); // State for task lists
-    const [selectedTaskList, setSelectedTaskList] = useState<string | null>(null); // State for selected task list
+    const [taskLists, setTaskLists] = useState<{ name: string; value: string }[]>([]);
+    const [selectedTaskList, setSelectedTaskList] = useState<string | null>(null);
 
     const statusOptions = [
         { name: "Not Started", value: "Not Started" },
@@ -66,7 +66,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ task, taskId, onComplete, currentUs
         if (taskId) {
             fetchTaskDetails();
         }
-    }, [taskId, fetchTaskDetails]);
+    }, []);
 
     useEffect(() => {
         if (task) {
@@ -87,7 +87,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ task, taskId, onComplete, currentUs
             setStatus(task.status);
             setAssignedUser(typeof task.assigned_user === 'object' ? task.assigned_user._id : null);
             setOwner(typeof task.owner === 'object' ? task.owner._id : task.owner ?? "");
-            setSelectedTaskList(typeof task.taskList === 'object' ? task.taskList._id : null);
+            task.taskList ? setSelectedTaskList(typeof task.taskList === 'object' ? task.taskList._id : null) : null;
         }
     }, [task]);
 
@@ -120,7 +120,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ task, taskId, onComplete, currentUs
         }
     };
 
-    if (currentUser && owner !== currentUser) {
+    if ((currentUser && currentUser.usertype !== "admin") || (currentUser && owner !== currentUser._id)) {
         return (
             <div className="text-center text-red-500">
                 Only the owner of the task can edit it.

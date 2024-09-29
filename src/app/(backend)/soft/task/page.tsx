@@ -11,6 +11,8 @@ import { LoaderContext } from "@/context/loaderContext";
 import toastMsg from "@/utils/toaster";
 import type { CustomUser } from "@/abstract/type";
 import { CustomTask } from "@/abstract/interface";
+import { useSession } from "next-auth/react";
+import { Loader } from "lucide-react";
 
 export default function TaskList() {
     const [tasks, setTasks] = useState<CustomTask[]>([]);
@@ -19,6 +21,7 @@ export default function TaskList() {
     const [currentTask, setCurrentTask] = useState<CustomTask | null>(null);
     const { setLoading } = useContext(LoaderContext);
 
+    const { data: user, status } = useSession();
 
     const fetchTasks = () => {
         setLoading(true);
@@ -65,6 +68,18 @@ export default function TaskList() {
             })
             .finally(() => setLoading(false));
     };
+
+    if (status === "loading") return (
+        <div className="flex justify-center items-center h-screen">
+            <Loader size={40} />
+        </div>
+    );
+
+    if (!user) return (
+        <div className="flex justify-center items-center h-screen">
+            <h1 className="text-2xl font-bold">Please sign in to view this page</h1>
+        </div>
+    );
 
     return (
         <>
@@ -125,7 +140,7 @@ export default function TaskList() {
                 <TaskForm
                     task={currentTask!}
                     users={users}
-                    currentUser={typeof currentTask?.assigned_user !== 'string' ? currentTask?.assigned_user?._id.toString() : ''}
+                    currentUser={user.user as CustomUser}
                     onComplete={() => {
                         setOpen(false);
                         fetchTasks();
