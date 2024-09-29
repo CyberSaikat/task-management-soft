@@ -3,8 +3,10 @@ import { getServerSession } from "next-auth/next";
 import { NextRequest, NextResponse } from "next/server";
 import { authOptions } from "../auth/[...nextauth]/options";
 import { CustomUser } from "@/abstract/type";
+import { conn } from "@/database/config";
 
 export async function GET() {
+    await conn();
 
     const session = await getServerSession(authOptions);
     if (!session) {
