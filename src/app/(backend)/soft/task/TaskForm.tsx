@@ -119,14 +119,14 @@ const TaskForm: React.FC<TaskFormProps> = ({ task, taskId, onComplete, currentUs
             console.error("Error creating/updating task", error);
         }
     };
-
-    if ((currentUser && currentUser.usertype !== "admin") || (currentUser && owner !== currentUser._id)) {
+    if ((taskId || task) && currentUser && (currentUser.usertype !== "admin" && owner !== currentUser._id)) {
         return (
             <div className="text-center text-red-500">
                 Only the owner of the task can edit it.
             </div>
         )
     }
+
 
     return (
         <form onSubmit={handleSubmit} className="space-y-6">

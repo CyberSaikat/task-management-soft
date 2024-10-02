@@ -1,10 +1,13 @@
 import Task from "@/models/Task";
+import TaskList from "@/models/TaskList";
 import { getServerSession } from "next-auth/next";
 import { NextRequest, NextResponse } from "next/server";
 import { authOptions } from "../auth/[...nextauth]/options";
 import { CustomUser } from "@/abstract/type";
+import { conn } from "@/database/config";
 
 export async function GET() {
+    await conn();
     try {
         const session = await getServerSession(authOptions);
         if (!session) {
@@ -20,25 +23,40 @@ export async function GET() {
         let tasks;
 
         if (isAdmin) {
-            tasks = await Task.find().populate("owner", "name").populate("owner", "name").populate({
-                path: 'assigned_user', select: 'name',
-                strictPopulate: false
-            }).populate({
-                path: 'taskList', strictPopulate: false, select: 'name'
-            });
+            tasks = await Task.find()
+                .populate("owner", "name")
+                .populate({
+                    path: 'assigned_user', select: 'name',
+                    strictPopulate: false
+                })
+                .populate({
+                    path: 'taskList',
+                    strictPopulate: false,
+                    select: 'name',
+                    options: { skipInvalid: true }
+                });
         } else {
             tasks = await Task.find({
                 $or: [
                     { owner: user._id },
                     { assigned_user: user._id }
                 ]
-            }).populate("owner", "name").populate({
-                path: 'assigned_user', select: 'name',
-                strictPopulate: false
-            }).populate({
-                path: 'taskList', strictPopulate: false, select: 'name'
-            });
+            })
+                .populate("owner", "name")
+                .populate({
+                    path: 'assigned_user', select: 'name',
+                    strictPopulate: false
+                })
+                .populate({
+                    path: 'taskList',
+                    strictPopulate: false,
+                    select: 'name',
+                    options: { skipInvalid: true }
+                });
         }
+
+        // Filter out tasks with missing or invalid taskList references (null values)
+        tasks = tasks.filter(task => task.taskList !== null);
 
         return NextResponse.json({ tasks }, { status: 200 });
     } catch (error) {
@@ -46,6 +64,7 @@ export async function GET() {
         return NextResponse.json({ message: error }, { status: 500 });
     }
 }
+
 
 export async function POST(req: NextRequest) {
     try {

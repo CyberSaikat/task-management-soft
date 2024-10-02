@@ -48,13 +48,12 @@ export async function PUT(req: NextRequest, { params }: { params: { taskId: stri
         task.status = status || task.status;
         task.assigned_user = assigned_user || task.assigned_user;
 
-        // Optionally, associate the task with a task list
         if (taskListId) {
             const taskList = await TaskList.findById(taskListId);
             if (!taskList) {
                 return NextResponse.json({ message: "Task list not found" }, { status: 404 });
             }
-            task.taskList = taskListId; // Assuming you've added a `taskList` field in Task schema
+            task.taskList = taskListId;
         }
 
         await task.save();
