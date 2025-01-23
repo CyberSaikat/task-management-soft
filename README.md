@@ -1,7 +1,7 @@
 # 📋 Task Management App
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/CyberSaikat/task-management-app/main/public/images/banner.png" alt="Leading Image" width="100%">
+  <img src="https://raw.githubusercontent.com/sculptorofcode/task-management-app/main/public/images/banner.png" alt="Leading Image" width="100%">
 </p>
 
 A robust Task Management application built with **Next.js**, **MongoDB**, and **NextAuth**. This application empowers users to efficiently manage tasks, view insightful statistics, and update task statuses in real-time. Admin users benefit from advanced features, including comprehensive statistics on task distribution and user assignments.
@@ -69,7 +69,7 @@ A robust Task Management application built with **Next.js**, **MongoDB**, and **
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/CyberSaikat/task-management-app.git
+   git clone https://github.com/sculptorofcode/task-management-app.git
    ```
 
 2. Navigate to the project directory:
@@ -275,4 +275,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-For any questions or support, please [open an issue](https://github.com/CyberSaikat/task-management-app/issues) or contact the maintainers.
+For any questions or support, please [open an issue](https://github.com/sculptorofcode/task-management-app/issues) or contact the maintainers.
